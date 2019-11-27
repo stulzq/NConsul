@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NConsul.AspNetCore;
 
 namespace AspNetCoregRpcService
 {
@@ -17,6 +18,10 @@ namespace AspNetCoregRpcService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+
+            services.AddConsul("http://localhost:8500")
+                .AddGRPCHealthCheck("localhost:5000")
+                .RegisterService("grpctest","localhost",5000,new []{"xc/grpc/test"});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GRPC", "GRPC", "{EA21117B-F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoregRpcService", "GRPC\AspNetCoregRpcService\AspNetCoregRpcService.csproj", "{A7E2D8E9-377A-4D36-BC57-32AA4F538310}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRPCHealthCheckTests", "GRPC\GRPCHealthCheckTests\GRPCHealthCheckTests.csproj", "{AB45326B-647B-4AC8-A80A-DFF0E1ABA399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRPCHealthCheckTests", "GRPC\GRPCHealthCheckTests\GRPCHealthCheckTests.csproj", "{AB45326B-647B-4AC8-A80A-DFF0E1ABA399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NConsul.AspNetCore", "NConsul.AspNetCore\NConsul.AspNetCore.csproj", "{5C740E00-13B5-4593-9F76-7DC8AAD3F7E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{AB45326B-647B-4AC8-A80A-DFF0E1ABA399}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB45326B-647B-4AC8-A80A-DFF0E1ABA399}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB45326B-647B-4AC8-A80A-DFF0E1ABA399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C740E00-13B5-4593-9F76-7DC8AAD3F7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C740E00-13B5-4593-9F76-7DC8AAD3F7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C740E00-13B5-4593-9F76-7DC8AAD3F7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C740E00-13B5-4593-9F76-7DC8AAD3F7E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

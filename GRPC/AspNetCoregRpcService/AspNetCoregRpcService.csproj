@@ -12,4 +12,8 @@
     <Protobuf Include="Protos\*.proto" GrpcServices="Server" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\NConsul.AspNetCore\NConsul.AspNetCore.csproj" />
+  </ItemGroup>
+
 </Project>
