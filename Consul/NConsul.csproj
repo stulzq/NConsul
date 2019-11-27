@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>NConsul</AssemblyName>
-    <PackageId>Consul</PackageId>
+    <PackageId>NConsul</PackageId>
     <PackageTags>Consul;service discovery;distributed locking;health checking</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Add GRPC healthcheck support.
+</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/stulzq/NConsul</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/stulzq/NConsul/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/stulzq/NConsul</RepositoryUrl>
   </PropertyGroup>
@@ -22,11 +22,20 @@
 
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
-    <Authors>Consul,stulzq</Authors>
+    <Authors>PlayFab,stulzq</Authors>
     <Version>0.7.3</Version>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>Consul Client. Fork from https://www.nuget.org/packages/Consul</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="ILRepack" Version="2.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
