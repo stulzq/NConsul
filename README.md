@@ -37,7 +37,13 @@ var registration = new AgentServiceRegistration()
 await consulClient.Agent.ServiceRegister(registration);
 ````
 
+## ASP.NET Core
 
+````csharp
+services.AddConsul("http://localhost:8500")
+    .AddGRPCHealthCheck("localhost:5000")
+    .RegisterService("grpctest","localhost",5000,new []{"xc/grpc/test"});
+````
 
 ## Example
 
