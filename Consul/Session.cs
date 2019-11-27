@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.Net;
 using System.Runtime.Serialization;
+using System.Threading;
+using System.Threading.Tasks;
+using NConsul.Interfaces;
+using NConsul.Utilities;
+using Newtonsoft.Json;
 
-namespace Consul
+namespace NConsul
 {
     public class SessionBehavior : IEquatable<SessionBehavior>
     {

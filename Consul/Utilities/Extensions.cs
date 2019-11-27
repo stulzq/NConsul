@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Consul
+namespace NConsul.Utilities
 {
     internal static class Extensions
     {

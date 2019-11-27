@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
+using Newtonsoft.Json;
 
-namespace Consul
+namespace NConsul
 {
     /// <summary>
     /// The type of ACL token, which sets the permissions ceiling

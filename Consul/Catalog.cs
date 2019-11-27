@@ -16,13 +16,14 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
+using Newtonsoft.Json;
 
-namespace Consul
+namespace NConsul
 {
     public class Node
     {

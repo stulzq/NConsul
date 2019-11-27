@@ -20,8 +20,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
 
-namespace Consul
+namespace NConsul
 {
     public class CoordinateEntry
     {

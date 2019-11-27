@@ -19,7 +19,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Consul
+namespace NConsul.Interfaces
 {
     public interface IHealthEndpoint
     {

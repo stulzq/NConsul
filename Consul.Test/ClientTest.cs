@@ -6,6 +6,8 @@ using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul;
+using NConsul.Utilities;
 using Xunit;
 
 namespace Consul.Test
@@ -54,14 +56,9 @@ namespace Consul.Test
             Environment.SetEnvironmentVariable("CONSUL_HTTP_SSL_VERIFY", string.Empty);
 
 
-#if !CORECLR
-            Assert.True((client.HttpHandler as WebRequestHandler).ServerCertificateValidationCallback(null, null, null,
-                SslPolicyErrors.RemoteCertificateChainErrors));
-            ServicePointManager.ServerCertificateValidationCallback = null;
-#else
+
             Assert.True((client.HttpHandler as HttpClientHandler).ServerCertificateCustomValidationCallback(null, null, null,
                 SslPolicyErrors.RemoteCertificateChainErrors));
-#endif
 
             Assert.NotNull(client);
         }
@@ -172,10 +169,7 @@ namespace Consul.Test
 #pragma warning restore CS0618 // Type or member is obsolete
                 await client.KV.Put(new KVPair("kv/reuseconfig") { Flags = 1000 });
                 Assert.Equal<ulong>(1000, (await client.KV.Get("kv/reuseconfig")).Response.Flags);
-#if !CORECLR
-                Assert.True(client.HttpHandler.ServerCertificateValidationCallback(null, null, null,
-                    SslPolicyErrors.RemoteCertificateChainErrors));
-#endif
+
             }
 
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -187,9 +181,7 @@ namespace Consul.Test
 #pragma warning restore CS0618 // Type or member is obsolete
                 await client.KV.Put(new KVPair("kv/reuseconfig") { Flags = 2000 });
                 Assert.Equal<ulong>(2000, (await client.KV.Get("kv/reuseconfig")).Response.Flags);
-#if !CORECLR
-                Assert.Null(client.HttpHandler.ServerCertificateValidationCallback);
-#endif
+
             }
 
 #pragma warning disable CS0618 // Type or member is obsolete

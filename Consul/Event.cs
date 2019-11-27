@@ -16,14 +16,15 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
+using System;
 using System.Globalization;
 using System.Linq;
-using Newtonsoft.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using System;
+using NConsul.Interfaces;
+using Newtonsoft.Json;
 
-namespace Consul
+namespace NConsul
 {
     /// <summary>
     /// UserEvent represents an event that was fired by the user

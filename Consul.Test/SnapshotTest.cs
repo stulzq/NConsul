@@ -20,6 +20,8 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using NConsul;
+using NConsul.Utilities;
 using Xunit;
 
 namespace Consul.Test

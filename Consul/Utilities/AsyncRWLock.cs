@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Consul
+namespace NConsul.Utilities
 {
     // Async reader/writer lock as outlined by Stephen Toub: https://blogs.msdn.microsoft.com/pfxteam/2012/02/12/building-async-coordination-primitives-part-7-asyncreaderwriterlock/
-    internal class AsyncReaderWriterLock
+    public class AsyncReaderWriterLock
     {
         private readonly Task<Releaser> m_readerReleaser;
         private readonly Task<Releaser> m_writerReleaser;

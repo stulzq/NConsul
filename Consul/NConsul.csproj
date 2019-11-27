@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <AssemblyName>NConsul</AssemblyName>
+    <PackageId>Consul</PackageId>
+    <PackageTags>Consul;service discovery;distributed locking;health checking</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/stulzq/NConsul</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/stulzq/NConsul/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/stulzq/NConsul</RepositoryUrl>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+    <Authors>Consul,stulzq</Authors>
+    <Version>0.7.3</Version>
+  </PropertyGroup>
+</Project>

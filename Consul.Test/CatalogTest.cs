@@ -18,6 +18,9 @@
 
 using System;
 using System.Threading.Tasks;
+using NConsul;
+using NConsul.Interfaces;
+using NConsul.Utilities;
 using Xunit;
 
 namespace Consul.Test

@@ -21,7 +21,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul;
+using NConsul.Utilities;
 using Xunit;
+using Semaphore = NConsul.Semaphore;
 
 namespace Consul.Test
 {

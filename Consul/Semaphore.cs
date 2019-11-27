@@ -22,13 +22,16 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
+using NConsul.Utilities;
 using Newtonsoft.Json;
+
 #if !(CORECLR || PORTABLE || PORTABLE40)
 using System.Security.Permissions;
 using System.Runtime.Serialization;
 #endif
 
-namespace Consul
+namespace NConsul
 {
 #if !(CORECLR || PORTABLE || PORTABLE40)
     [Serializable]
@@ -266,7 +269,7 @@ namespace Consul
         private Task _sessionRenewTask;
         private Task _monitorTask;
 
-        internal SemaphoreOptions Opts { get; set; }
+        public SemaphoreOptions Opts { get; set; }
 
         public bool IsHeld
         {
@@ -286,7 +289,7 @@ namespace Consul
             }
         }
 
-        internal string LockSession { get; set; }
+        public string LockSession { get; set; }
 
         internal Semaphore(ConsulClient c)
         {

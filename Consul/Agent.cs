@@ -16,15 +16,17 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections;
+using NConsul.Interfaces;
+using NConsul.Utilities;
+using Newtonsoft.Json;
 
-namespace Consul
+namespace NConsul
 {
     /// <summary>
     /// The status of a TTL check

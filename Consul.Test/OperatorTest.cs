@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NConsul;
+using NConsul.Utilities;
 using Xunit;
 
 namespace Consul.Test

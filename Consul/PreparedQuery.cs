@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
+using Newtonsoft.Json;
 
-namespace Consul
+namespace NConsul
 {
     /// <summary>
     /// QueryDatacenterOptions sets options about how we fail over if there are no healthy nodes in the local datacenter.

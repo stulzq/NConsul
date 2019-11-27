@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Consul
+namespace NConsul.Interfaces
 {
     public interface ISnapshotEndpoint
     {

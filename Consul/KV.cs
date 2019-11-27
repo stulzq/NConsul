@@ -17,13 +17,14 @@
 // -----------------------------------------------------------------------
 
 using System;
-using System.Net.Http;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
+using NConsul.Utilities;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
-namespace Consul
+namespace NConsul
 {
     /// <summary>
     /// KVPair is used to represent a single K/V entry

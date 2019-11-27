@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
 using System.Net.Http.Headers;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Threading.Tasks;
+using NConsul.Utilities;
+using Newtonsoft.Json;
+
 #if !(CORECLR || PORTABLE || PORTABLE40)
 using System.Security.Permissions;
 using System.Runtime.Serialization;
 #endif
 
-namespace Consul
+namespace NConsul
 {
     /// <summary>
     /// Represents errors that occur while sending data to or fetching data from the Consul agent.
@@ -84,7 +86,7 @@ namespace Consul
         [Obsolete("Use of DisableServerCertificateValidation should be converted to setting the WebRequestHandler's ServerCertificateValidationCallback in the ConsulClient constructor" +
             "This property will be removed when 0.8.0 is released.", false)]
 #endif
-        internal bool DisableServerCertificateValidation
+        public bool DisableServerCertificateValidation
         {
             get
             {
@@ -120,7 +122,7 @@ namespace Consul
 #endif
         public NetworkCredential HttpAuth
         {
-            internal get
+            get
             {
                 return _httpauth;
             }
@@ -487,21 +489,17 @@ namespace Consul
 
             internal readonly bool skipClientDispose;
             internal readonly HttpClient HttpClient;
-#if CORECLR
+
             internal readonly HttpClientHandler HttpHandler;
-#else
-            internal readonly WebRequestHandler HttpHandler;
-#endif
+
             public readonly ConsulClientConfiguration Config;
 
             public ConsulClientConfigurationContainer()
             {
                 Config = new ConsulClientConfiguration();
-#if CORECLR
+
                 HttpHandler = new HttpClientHandler();
-#else
-                HttpHandler = new WebRequestHandler();
-#endif
+
                 HttpClient = new HttpClient(HttpHandler);
                 HttpClient.Timeout = TimeSpan.FromMinutes(15);
                 HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -519,11 +517,9 @@ namespace Consul
             public ConsulClientConfigurationContainer(ConsulClientConfiguration config)
             {
                 Config = config;
-#if CORECLR
+
                 HttpHandler = new HttpClientHandler();
-#else
-                HttpHandler = new WebRequestHandler();
-#endif
+
                 HttpClient = new HttpClient(HttpHandler);
                 HttpClient.Timeout = TimeSpan.FromMinutes(15);
                 HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -580,12 +576,10 @@ namespace Consul
 
         private ConsulClientConfigurationContainer ConfigContainer;
 
-        internal HttpClient HttpClient { get { return ConfigContainer.HttpClient; } }
-#if CORECLR
-        internal HttpClientHandler HttpHandler { get { return ConfigContainer.HttpHandler; } }
-#else
-        internal WebRequestHandler HttpHandler { get { return ConfigContainer.HttpHandler; } }
-#endif
+        public HttpClient HttpClient { get { return ConfigContainer.HttpClient; } }
+
+        public HttpClientHandler HttpHandler { get { return ConfigContainer.HttpHandler; } }
+
         public ConsulClientConfiguration Config { get { return ConfigContainer.Config; } }
 
         internal readonly JsonSerializer serializer = new JsonSerializer();
@@ -620,11 +614,9 @@ namespace Consul
         /// <param name="configOverride">The Action to modify the default configuration with</param>
         /// <param name="clientOverride">The Action to modify the HttpClient with</param>
         /// <param name="handlerOverride">The Action to modify the WebRequestHandler with</param>
-#if !CORECLR
-        public ConsulClient(Action<ConsulClientConfiguration> configOverride, Action<HttpClient> clientOverride, Action<WebRequestHandler> handlerOverride)
-#else
+
         public ConsulClient(Action<ConsulClientConfiguration> configOverride, Action<HttpClient> clientOverride, Action<HttpClientHandler> handlerOverride)
-#endif
+
         {
             var ctr = new ConsulClientConfigurationContainer();
 
@@ -741,11 +733,9 @@ namespace Consul
             ApplyConfig(sender as ConsulClientConfiguration, HttpHandler, HttpClient);
 
         }
-#if !CORECLR
-        void ApplyConfig(ConsulClientConfiguration config, WebRequestHandler handler, HttpClient client)
-#else
+
         void ApplyConfig(ConsulClientConfiguration config, HttpClientHandler handler, HttpClient client)
-#endif        
+       
         {
 #pragma warning disable CS0618 // Type or member is obsolete
             if (config.HttpAuth != null)
@@ -774,18 +764,8 @@ namespace Consul
                 }
             }
 #endif
-#if !CORECLR
-#pragma warning disable CS0618 // Type or member is obsolete
-            if (config.DisableServerCertificateValidation)
-#pragma warning restore CS0618 // Type or member is obsolete
-            {
-                handler.ServerCertificateValidationCallback += (certSender, cert, chain, sslPolicyErrors) => { return true; };
-            }
-            else
-            {
-                handler.ServerCertificateValidationCallback = null;
-            }
-#else
+
+
 #pragma warning disable CS0618 // Type or member is obsolete
             if (config.DisableServerCertificateValidation)
 #pragma warning restore CS0618 // Type or member is obsolete
@@ -796,7 +776,7 @@ namespace Consul
             {
                 handler.ServerCertificateCustomValidationCallback = null;
             }
-#endif
+
 
             if (!string.IsNullOrEmpty(config.Token))
             {
@@ -808,7 +788,7 @@ namespace Consul
             }
         }
 
-        internal GetRequest<TOut> Get<TOut>(string path, QueryOptions opts = null)
+        public GetRequest<TOut> Get<TOut>(string path, QueryOptions opts = null)
         {
             return new GetRequest<TOut>(this, path, opts ?? QueryOptions.Default);
         }
@@ -833,7 +813,7 @@ namespace Consul
             return new PutReturningRequest<TOut>(this, path, opts ?? WriteOptions.Default);
         }
 
-        internal PutRequest<TIn> Put<TIn>(string path, TIn body, WriteOptions opts = null)
+        public PutRequest<TIn> Put<TIn>(string path, TIn body, WriteOptions opts = null)
         {
             return new PutRequest<TIn>(this, path, body, opts ?? WriteOptions.Default);
         }
@@ -863,7 +843,7 @@ namespace Consul
     {
         internal ConsulClient Client { get; set; }
         internal HttpMethod Method { get; set; }
-        internal Dictionary<string, string> Params { get; set; }
+        public Dictionary<string, string> Params { get; set; }
         internal Stream ResponseStream { get; set; }
         internal string Endpoint { get; set; }
 

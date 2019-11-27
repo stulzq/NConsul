@@ -17,12 +17,11 @@
 // -----------------------------------------------------------------------
 
 using System;
-using Newtonsoft.Json;
-using System.Reflection;
 using System.Linq;
-using System.Collections.Generic;
+using System.Reflection;
+using Newtonsoft.Json;
 
-namespace Consul
+namespace NConsul.Utilities
 {
     public class NanoSecTimespanConverter : JsonConverter
     {

@@ -2,8 +2,10 @@
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
+using NConsul.Utilities;
 
-namespace Consul
+namespace NConsul
 {
 #if !(CORECLR || PORTABLE || PORTABLE40)
     [Serializable]
@@ -155,8 +157,8 @@ namespace Consul
         private Task _monitorTask;
 
         private readonly ConsulClient _client;
-        internal LockOptions Opts { get; set; }
-        internal string LockSession { get; set; }
+        public LockOptions Opts { get; set; }
+        public string LockSession { get; set; }
 
         /// <summary>
         /// If the lock is held or not.

@@ -19,8 +19,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using NConsul.Interfaces;
 
-namespace Consul
+namespace NConsul
 {
     /// <summary>
     /// Raw can be used to do raw queries against custom endpoints
