@@ -1,6 +1,6 @@
 # Consul.NET
 
-Fork and Support GRPC.
+Fork from https://github.com/PlayFab/consuldotnet and Support GRPC.
 
 * Consul API: [v0.7.2](https://github.com/hashicorp/consul/tree/v0.7.2/api)
 * .NET Core: >= 2.0
