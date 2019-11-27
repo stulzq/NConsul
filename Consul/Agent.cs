@@ -270,6 +270,12 @@ namespace NConsul
         [JsonConverter(typeof(DurationTimespanConverter))]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public TimeSpan? DeregisterCriticalServiceAfter { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string GRPC { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public bool GRPCUseTLS { get; set; }
     }
 
     public enum LogLevel

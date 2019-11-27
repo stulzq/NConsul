@@ -25,4 +25,8 @@
     <Authors>Consul,stulzq</Authors>
     <Version>0.7.3</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="ILRepack" Version="2.0.18" />
+  </ItemGroup>
 </Project>
