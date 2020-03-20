@@ -44,6 +44,8 @@ namespace NConsul.Interfaces
         Task<WriteResult> ServiceDeregister(string serviceID, CancellationToken ct = default(CancellationToken));
         Task<WriteResult> ServiceRegister(AgentServiceRegistration service, CancellationToken ct = default(CancellationToken));
         Task<QueryResult<Dictionary<string, AgentService>>> Services(CancellationToken ct = default(CancellationToken));
+        Task<QueryResult<Dictionary<string, AgentService>>> Services(string filter, CancellationToken ct = default(CancellationToken));
+        Task<QueryResult<AgentService>> Service(string serviceId, CancellationToken ct = default(CancellationToken));
         Task<WriteResult> UpdateTTL(string checkID, string output, TTLStatus status, CancellationToken ct = default(CancellationToken));
         Task WarnTTL(string checkID, string note, CancellationToken ct = default(CancellationToken));
         Task<Agent.LogStream> Monitor(LogLevel level = default(LogLevel), CancellationToken ct = default(CancellationToken));
