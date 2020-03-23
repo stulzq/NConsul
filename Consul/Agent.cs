@@ -366,6 +366,33 @@ namespace NConsul
         }
 
         /// <summary>
+        /// Services returns the locally registered services
+        /// </summary>
+        /// <param name="filter">Specifies the expression used to filter the queries results prior to returning the data.https://www.consul.io/api/features/filtering.html</param>
+        /// <param name="ct"></param>
+        /// <returns>A map of the registered services and service data</returns>
+        public Task<QueryResult<Dictionary<string, AgentService>>> Services(string filter, CancellationToken ct = default(CancellationToken))
+        {
+            var req = _client.Get<Dictionary<string, AgentService>>($"/v1/agent/services");
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                req.Params["filter"] = filter;
+            }
+            return req.Execute(ct);
+        }
+
+        /// <summary>
+        /// Services returns the locally registered services
+        /// </summary>
+        /// <param name="serviceId">Specifies the ID of the service to fetch. This is specified as part of the URL.</param>
+        /// <param name="ct"></param>
+        /// <returns>A map of the registered services and service data</returns>
+        public Task<QueryResult<AgentService>> Service(string serviceId, CancellationToken ct = default(CancellationToken))
+        {
+            return _client.Get<AgentService>($"/v1/agent/service/{serviceId}").Execute(ct);
+        }
+
+        /// <summary>
         /// Members returns the known gossip members. The WAN flag can be used to query a server for WAN members.
         /// </summary>
         /// <returns>An array of gossip peers</returns>
