@@ -7,9 +7,13 @@ namespace NConsul.AspNetCore
     {
         public static NConsulBuilder AddConsul(this IServiceCollection service, NConsulOptions options)
         {
-            var consulClient= new ConsulClient(x => x.Address = new Uri(options.Address));
+            var consulClient = new ConsulClient(x => x.Address = new Uri(options.Address));
             service.AddSingleton(consulClient);
-            service.Configure(new Action<NConsulOptions>(op=>op.Address=options.Address));
+            service.Configure(new Action<NConsulOptions>(op =>
+            {
+                op.Address = options.Address;
+                op.Token = options.Token;
+            }));
 
             return new NConsulBuilder(consulClient);
         }
