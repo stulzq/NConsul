@@ -78,5 +78,15 @@ namespace NConsul.AspNetCore
                 _client.Agent.ServiceDeregister(registration.ID).Wait();
             };
         }
+
+        /// <summary>
+        /// 移除服务
+        /// </summary>
+        /// <param name="serviceId"></param>
+        public void Deregister(string serviceId)
+        {
+            _client?.Agent?.ServiceDeregister(serviceId).GetAwaiter().GetResult();
+        }
+
     }
 }
