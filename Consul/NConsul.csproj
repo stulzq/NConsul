@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>NConsul</AssemblyName>
     <PackageId>NConsul</PackageId>
     <PackageTags>Consul;service discovery;distributed locking;health checking</PackageTags>
@@ -24,7 +24,7 @@
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
     <Authors>PlayFab,stulzq</Authors>
-    <Version>0.8.0</Version>
+    <Version>0.8.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Description>Consul Client. Fork from https://www.nuget.org/packages/Consul</Description>
   </PropertyGroup>
