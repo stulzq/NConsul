@@ -1,3 +1,5 @@
+Please support https://github.com/G-Research/consuldotnet , this repo is no longer maintained
+
 # Consul.NET
 
 Fork from https://github.com/PlayFab/consuldotnet and Support GRPC.
